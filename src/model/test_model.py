@@ -19,9 +19,9 @@ cat_features = [
     "native-country",
     ]
 
-model = load(".model.joblib")
-encoder = load(".encoder.joblib")
-lb = load(".lb.joblib")
+model = load("./model.joblib")
+encoder = load("./encoder.joblib")
+lb = load("./lb.joblib")
 df = pd.read_csv('../data/census_cleaned.csv').drop('Unnamed: 0', axis=1)
 X, _, _, _ = process_data(df, categorical_features=cat_features, training=False, encoder=encoder, lb=lb, label='salary')
 y = df['salary']

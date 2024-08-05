@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from joblib import load
 import pandas as pd
 import numpy as np
-from model.model import inference
-from data.preprocess_data import process_data
+from .model.model import inference
+from .data.preprocess_data import process_data
 import os
 
 
