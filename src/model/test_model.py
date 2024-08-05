@@ -53,4 +53,4 @@ test_inefernce(y_test, pred)
 test_process_data(X)
 
 
-test_model_slicing('slice_model_output.txt')
+test_model_slicing('src/model/slice_model_output.txt')
