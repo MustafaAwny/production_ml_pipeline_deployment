@@ -5,8 +5,8 @@ from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from joblib import load
 
-from preprocess_data import process_data
-from model import inference
+from .preprocess_data import process_data
+from .model import inference
 
 cat_features = [
     "workclass",
