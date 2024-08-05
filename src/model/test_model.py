@@ -22,7 +22,7 @@ cat_features = [
 model = load("src/model/model.joblib")
 encoder = load("src/model/encoder.joblib")
 lb = load("src/model/lb.joblib")
-df = pd.read_csv('../data/census_cleaned.csv').drop('Unnamed: 0', axis=1)
+df = pd.read_csv('src/data/census_cleaned.csv').drop('Unnamed: 0', axis=1)
 X, _, _, _ = process_data(df, categorical_features=cat_features, training=False, encoder=encoder, lb=lb, label='salary')
 y = df['salary']
 y = lb.fit_transform(y.values).ravel()
