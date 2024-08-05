@@ -31,7 +31,7 @@ pred = inference(model, X_test)
 
 
 
-def  test_inefernce(y_test, y_pred):
+def test_inefernce(y_test, y_pred):
     assert len(y_pred) == len(y_test)
     assert type(y_pred) == type(y_test)
 
