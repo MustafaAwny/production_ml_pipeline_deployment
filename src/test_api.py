@@ -2,7 +2,7 @@ import pytest
 import pandas as pd
 import numpy as np
 from fastapi.testclient import TestClient
-from main import app
+from .main import app
 
 
 @pytest.fixture
