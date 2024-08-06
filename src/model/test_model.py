@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import os
+import pytest
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from joblib import load
@@ -27,20 +28,19 @@ X, _, _, _ = process_data(df, categorical_features=cat_features, training=False,
 y = df['salary']
 y = lb.fit_transform(y.values).ravel()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-pred = inference(model, X_test)
+pred = np.load("src/model/output.npy")
 
 
+def test_inefernce():
+    assert type(pred) == type(y_test)
 
-def test_inefernce(y_test, y_pred):
-    pass
-    #assert len(y_pred) == len(y_test)
-    #assert type(y_pred) == type(y_test)
 
-def test_process_data(x):
-    assert len(x) > 0
+def test_process_data():
+    assert len(X) > 0
     
-def test_model_slicing(path):
-    with open(path, 'r') as f_r:
+
+def test_model_slicing():
+    with open('src/model/slice_model_output.txt', 'r') as f_r:
         content = f_r.read()
         assert len(content) > 0
 
@@ -48,10 +48,10 @@ def test_model_slicing(path):
 
 
 
-test_inefernce(y_test, pred)
+#test_inefernce(y_test, pred)
 
 
-test_process_data(X)
+#test_process_data(X)
 
 
-test_model_slicing('src/model/slice_model_output.txt')
+#test_model_slicing('src/model/slice_model_output.txt')

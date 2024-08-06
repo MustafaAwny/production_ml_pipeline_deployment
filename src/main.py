@@ -66,6 +66,7 @@ class User(BaseModel):
         'Holand-Netherlands']
 
 
+
 app = FastAPI()
 
 
@@ -76,9 +77,9 @@ async def get_items():
 
 @app.post("/")
 async def inferences(user_data: User):
-    model = load("model/model.joblib")
-    encoder = load("model/encoder.joblib")
-    lb = load("model/lb.joblib")
+    model = load("model.joblib")
+    encoder = load("encoder.joblib")
+    lb = load("lb.joblib")
 
     array = np.array([[
                      user_data.age,
@@ -96,7 +97,7 @@ async def inferences(user_data: User):
     df = pd.DataFrame(data=array, columns=["age", "workclass", "education", "marital-status", "occupation", "relationship", "race", "sex",
                       "hours-per-week", "native-country"])
                       
-    X, y, e, l = process_data(df, categorical_features=cat_features, encoder=encoder, lb=lb, training=False, label='salary')
-    pred = inference(model, X)
+    X, y, e, l = process_data(df, categorical_features=cat_features, encoder=encoder, lb=lb, training=False)
+    pred = model.predict(X)
     y = lb.inverse_transform(pred)[0]
     return {"prediction": y}

@@ -60,7 +60,7 @@ cd
         y = lb.fit_transform(y.values).ravel()
     elif training is False:
         X_categorical = encoder.transform(X_categorical)
-        y = lb.fit_transform(y.values).ravel()
+        #y = lb.fit_transform(y.values).ravel()
         try:
             X_continuous.drop('salary', axis=1, inplace=True)
         except:
